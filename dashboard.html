@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubTrack – Overview</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page" data-protected="true" data-page="dashboard">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo-circle"></span>
+      <div>
+        <span class="brand-name">SubTrack</span>
+        <span class="brand-tagline">Your Personal Subscription Tracker</span>
+      </div>
+    </div>
+
+    <ul class="nav">
+      <li><a href="dashboard.html" class="active">Overview</a></li>
+      <li><a href="subscriptions.html">Subscriptions</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <h1>Overview</h1>
+        <p>Keep track of your subscription and recurring expenses.</p>
+      </div>
+
+      <div class="user-profile">
+        <span class="avatar" id="userAvatar"></span>
+        <div>
+          <span class="user-name" id="userName"></span>
+          <span class="user-pronouns" id="userEmail"></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="card stat-card">
+        <h3>Monthly Spending</h3>
+        <span class="stat-value" id="monthlySpending">₱0.00</span>
+        <span class="stat-label">Estimated monthly cost</span>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Yearly Spending</h3>
+        <span class="stat-value" id="yearlySpending">₱0.00</span>
+        <span class="stat-label">Estimated annual cost</span>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Active Subscription</h3>
+        <span class="stat-value" id="activeCount">0</span>
+        <span class="stat-label">Currently Active</span>
+      </article>
+
+      <article class="card stat-card">
+        <h3>Upcoming Renewals</h3>
+        <span class="stat-value" id="upcomingCount">0</span>
+        <span class="stat-label">Within the next 7 days</span>
+      </article>
+    </section>
+
+    <section class="card transactions">
+      <h2>Upcoming Renewals</h2>
+      <p class="subtext">Due within the next 30 days</p>
+      <ul class="transaction-list" id="renewalList"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

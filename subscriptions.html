@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SubTrack – Subscriptions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page" data-protected="true" data-page="subscriptions">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo-circle"></span>
+      <div>
+        <span class="brand-name">SubTrack</span>
+        <span class="brand-tagline">Your Personal Subscription Manager</span>
+      </div>
+    </div>
+
+    <ul class="nav">
+      <li><a href="dashboard.html">Overview</a></li>
+      <li><a href="subscriptions.html" class="active">Subscriptions</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div>
+        <h1>Subscription</h1>
+        <p>All your recurring services in one place.</p>
+      </div>
+
+      <div class="user-profile">
+        <span class="avatar" id="userAvatar"></span>
+        <div>
+          <span class="user-name" id="userName"></span>
+          <span class="user-pronouns" id="userEmail"></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="22" y2="22"></line>
+          </svg>
+        </span>
+        <input type="text" id="searchInput" placeholder="Search here...">
+      </div>
+
+      <select class="filter-select" id="categoryFilter">
+        <option value="">All categories</option>
+        <option>Entertainment</option>
+        <option>Music</option>
+        <option>Productivity</option>
+        <option>Education</option>
+        <option>Utilities</option>
+        <option>Other</option>
+      </select>
+
+      <select class="filter-select" id="statusFilter">
+        <option value="">All statuses</option>
+        <option>Active</option>
+        <option>Paused</option>
+        <option>Cancelled</option>
+      </select>
+    </section>
+
+    <div class="count-row">
+      <button type="button" class="btn-add" id="addBtn">+ Add Subscription</button>
+      <span class="count-badge" id="countBadge">0 subscriptions</span>
+    </div>
+
+    <section class="card table-card">
+      <table class="sub-table">
+        <thead>
+          <tr>
+            <th>Subscription</th>
+            <th>Price</th>
+            <th>Billing Cycle</th>
+            <th>Next Renewal</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="subTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Add / Edit popup -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h2 id="modalTitle">Add Subscription</h2>
+
+      <form id="subForm">
+        <div class="modal-group">
+          <label for="subName">Name</label>
+          <input type="text" id="subName" required>
+        </div>
+
+        <div class="modal-group">
+          <label for="subCategory">Category</label>
+          <select id="subCategory">
+            <option>Entertainment</option>
+            <option>Music</option>
+            <option>Productivity</option>
+            <option>Education</option>
+            <option>Utilities</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-group">
+            <label for="subPrice">Price (₱)</label>
+            <input type="number" id="subPrice" min="0" step="0.01" required>
+          </div>
+          <div class="modal-group">
+            <label for="subCycle">Billing Cycle</label>
+            <select id="subCycle">
+              <option>Monthly</option>
+              <option>Weekly</option>
+              <option>Yearly</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-row">
+          <div class="modal-group">
+            <label for="subRenewal">Next Renewal</label>
+            <input type="date" id="subRenewal" required>
+          </div>
+          <div class="modal-group">
+            <label for="subStatus">Status</label>
+            <select id="subStatus">
+              <option>Active</option>
+              <option>Paused</option>
+              <option>Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-edit" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
