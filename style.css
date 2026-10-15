@@ -1274,3 +1274,22 @@ h3 {
     font-size: 16px;
   }
 }
+
+/* ---------- Logout confirmation popup ---------- */
+.confirm-modal {
+  max-width: 400px;
+  text-align: center;
+}
+
+.confirm-modal h2 {
+  margin-bottom: 10px;
+}
+
+.confirm-modal p {
+  font-size: 1rem;
+  margin-bottom: 26px;
+}
+
+.confirm-modal .modal-actions {
+  justify-content: center;
+}

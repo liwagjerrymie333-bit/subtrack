@@ -121,12 +121,48 @@ function monthlyCost(sub) {
   return sub.price; // Monthly
 }
 
-/* ---------- Sidebar + profile (shared by all app pages) ---------- */
+/* ---------- Logout confirmation popup ---------- */
+function showLogoutConfirm() {
+  if (document.getElementById("logoutOverlay")) return; // already open
+
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay open";
+  overlay.id = "logoutOverlay";
+  overlay.innerHTML =
+    '<div class="modal confirm-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">' +
+      '<h2 id="logoutTitle">Log out?</h2>' +
+      '<p>Are you sure you want to log out of SubTrack?</p>' +
+      '<div class="modal-actions">' +
+        '<button type="button" class="btn-edit" id="logoutCancel">Cancel</button>' +
+        '<button type="button" class="btn-primary" id="logoutConfirm">Log out</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  function closeLogoutConfirm() {
+    overlay.remove();
+    document.removeEventListener("keydown", onKey);
+  }
+
+  function onKey(e) {
+    if (e.key === "Escape") closeLogoutConfirm();
+  }
+
+  document.addEventListener("keydown", onKey);
+  document.getElementById("logoutCancel").addEventListener("click", closeLogoutConfirm);
+  document.getElementById("logoutConfirm").addEventListener("click", logout);
+  overlay.addEventListener("click", function (e) {
+    if (e.target === overlay) closeLogoutConfirm(); // clicked the dark background
+  });
+
+  document.getElementById("logoutCancel").focus(); // safe default: Cancel
+}
+
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", function (e) {
     e.preventDefault();
-    logout();
+    showLogoutConfirm();
   });
 }
 
